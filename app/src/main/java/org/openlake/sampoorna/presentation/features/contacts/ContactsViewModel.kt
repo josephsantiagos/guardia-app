@@ -1,7 +1,9 @@
 package org.openlake.sampoorna.presentation.features.contacts
 
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ContactsViewModel @Inject constructor(private val repository: ContactsRepository) : ViewModel() {
 
-    var allContacts = Transformations.map(repository.fetchAllContacts()) { list ->
+    var allContacts: LiveData<List<Contact>> = repository.fetchAllContacts().map { list ->
         list.map {
             Transformer.convertContactEntityToContactModel(it)
         }

@@ -24,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.openlake.sampoorna.App
 import org.openlake.sampoorna.R
 import org.openlake.sampoorna.data.constants.Constants
+import org.openlake.sampoorna.data.sources.entities.Contact
 import org.openlake.sampoorna.databinding.FragmentAlertBinding
 import org.openlake.sampoorna.presentation.MainActivity.Companion.SOSSwitch
 import org.openlake.sampoorna.presentation.features.sos_message.SosMessageBottomSheet
@@ -40,8 +41,7 @@ class AlertFragment: Fragment() {
 
     private val PERMISSIONS = arrayOf(
         Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.SEND_SMS
+        Manifest.permission.ACCESS_COARSE_LOCATION
     )
     private val REQUEST_CODE = 101
 

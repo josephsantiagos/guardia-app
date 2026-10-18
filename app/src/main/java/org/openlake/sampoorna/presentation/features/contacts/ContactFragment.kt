@@ -34,12 +34,9 @@ class ContactFragment : Fragment(R.layout.fragment_contact), Listeners {
 
         //ViewModel instantiating
         contactsViewModel = ViewModelProvider(this)[ContactsViewModel::class.java]
-        contactsViewModel.allContacts.observe(viewLifecycleOwner
-        ) {
-            //This is problematic:
-            Log.d("it", "$it")
-            if (it != null) {
-                adapter.updateContacts(it as ArrayList<Contact>)
+        contactsViewModel.allContacts.observe(viewLifecycleOwner) { contactsList: List<Contact>? ->
+            if (contactsList != null) {
+                adapter.updateContacts(ArrayList(contactsList))
             }
         }
         //fab actions
